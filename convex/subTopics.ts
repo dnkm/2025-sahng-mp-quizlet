@@ -20,7 +20,7 @@ export const createSubTopic = mutation({
 
 export const listSubTopics = query({
   args: {},
-  handler: async (ctx, args) => {
+  handler: async (ctx) => {
     return await ctx.db.query("subTopics").collect();
   },
 });

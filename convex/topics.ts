@@ -1,9 +1,8 @@
-import { useQuery } from "convex/react";
 import { query } from "./_generated/server";
 
 export const listTopics = query({
   args: {},
-  async handler(ctx, args) {
+  async handler(ctx) {
     return await ctx.db.query("topics").collect();
   },
 });
