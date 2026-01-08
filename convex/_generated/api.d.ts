@@ -12,6 +12,7 @@ import type * as auth from "../auth.js";
 import type * as http from "../http.js";
 import type * as migrations from "../migrations.js";
 import type * as subTopics from "../subTopics.js";
+import type * as topics from "../topics.js";
 
 import type {
   ApiFromModules,
@@ -24,6 +25,7 @@ declare const fullApi: ApiFromModules<{
   http: typeof http;
   migrations: typeof migrations;
   subTopics: typeof subTopics;
+  topics: typeof topics;
 }>;
 
 /**
