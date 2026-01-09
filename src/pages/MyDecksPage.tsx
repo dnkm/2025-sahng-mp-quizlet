@@ -20,7 +20,7 @@ export default function MyDecksPage() {
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-4xl font-bold">My Decks</h1>
         <Link
-          to="/decks/create"
+          to="/decks/create/select"
           className="bg-dark dark:bg-light text-light dark:text-dark px-6 py-2 rounded-md hover:opacity-90 transition"
         >
           Create New Deck

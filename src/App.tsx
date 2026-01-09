@@ -5,6 +5,8 @@ import BrowsePage from "./pages/BrowsePage";
 import MyDecksPage from "./pages/MyDecksPage";
 import CreateDeckPage from "./pages/CreateDeckPage";
 import PlayDeckPage from "./pages/PlayDeckPage";
+import CreateDeckModePage from "./pages/CreateDeckModePage";
+import ProtectedLayout from "./layouts/ProtectedLayout";
 
 export default function App() {
   return (
@@ -14,9 +16,15 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/browse" element={<BrowsePage />} />
-          <Route path="/decks" element={<MyDecksPage />} />
-          <Route path="/decks/create" element={<CreateDeckPage />} />
-          <Route path="/decks/:deckId/play" element={<PlayDeckPage />} />
+          <Route element={<ProtectedLayout />}>
+            <Route path="/decks" element={<MyDecksPage />} />
+            <Route
+              path="/decks/create/select"
+              element={<CreateDeckModePage />}
+            />
+            <Route path="/decks/create" element={<CreateDeckPage />} />
+            <Route path="/decks/:deckId/play" element={<PlayDeckPage />} />
+          </Route>
         </Routes>
       </main>
     </BrowserRouter>

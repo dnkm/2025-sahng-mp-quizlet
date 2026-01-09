@@ -25,19 +25,24 @@ export default function Navigation() {
                 QuizDeck
               </Link>
               <div className="flex gap-1">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    className={`px-4 py-2 rounded-md transition ${
-                      location.pathname === link.path
-                        ? "bg-slate-200 dark:bg-slate-800"
-                        : "hover:bg-slate-100 dark:hover:bg-slate-900"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+                {navLinks.map((link) => {
+                  const isActive = location.pathname === link.path;
+                  const baseClasses = `px-4 py-2 rounded-md transition ${
+                    isActive
+                      ? "bg-slate-200 dark:bg-slate-800"
+                      : "hover:bg-slate-100 dark:hover:bg-slate-900"
+                  }`;
+
+                  return (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      className={baseClasses}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
 
@@ -62,9 +67,7 @@ export default function Navigation() {
         </div>
       </nav>
 
-      {showAuthModal && (
-        <AuthModal onClose={() => setShowAuthModal(false)} />
-      )}
+      {showAuthModal && <AuthModal onClose={() => setShowAuthModal(false)} />}
     </>
   );
 }
@@ -142,9 +145,7 @@ function AuthModal({ onClose }: { onClose: () => void }) {
 
           {error && (
             <div className="bg-red-500/20 border-2 border-red-500/50 rounded-md p-3">
-              <p className="text-sm text-red-700 dark:text-red-300">
-                {error}
-              </p>
+              <p className="text-sm text-red-700 dark:text-red-300">{error}</p>
             </div>
           )}
         </form>
